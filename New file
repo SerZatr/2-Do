@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<tittle>2Do</title>
+</head>
+
+<body></body>
+
+<script>
+alert('HelloWorld');
+</script>
+</html>
