@@ -7,6 +7,6 @@
 <body></body>
 
 <script>
-alert('Hello World');
+alert('Hello new World');
 </script>
 </html>
