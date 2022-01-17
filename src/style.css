@@ -1,0 +1,686 @@
+html, body {
+    min-height: 100%;
+    height: 1px;
+    margin: 0px;
+    border: 0px;
+    font-family: ubuntu;
+    line-height: 1.6em;
+    color: #222;
+    overflow: hidden;
+  }
+  input{
+    font-family: ubuntu;
+  }
+  textarea{
+    font-family: ubuntu;
+  }
+  button{
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 40px;
+  }
+  .newTaskButton{
+    width: 200px;
+    margin-left: calc(50% - 100px);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:#333;
+    border: 1px solid #777;
+    cursor: pointer;
+    outline: 0px;
+  }
+  .newTaskButton:hover, .newTaskButton:focus{
+    background-color: #ddd;
+  }
+  .impButton{
+    float: right;
+    width: 136px;
+    background-color: #36e;
+    cursor: pointer;
+    outline: 0px;
+    border: 0px;
+    color: #fff;
+  }
+  .impButton:hover, .impButton:focus{
+    background-color: #47f;
+  }
+  .impButton:focus{
+    outline: 0px;
+    border: 0px;
+  }
+  .newTaskWindow{
+    position: relative;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px 1fr 56px;
+    margin: auto;
+    width: 440px;
+    max-height: calc(100% - 200px);
+    min-height: 440px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.250), 0px 1px 5px rgba(0, 0, 0, 0.300);
+    font-size: 16px;
+    overflow-y: hidden;
+  }
+  
+  .newTaskWindow .body{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+  /* padding: 0px; */
+  /*  background-color: #f1a;*/
+  
+  }
+  .newTaskWindow .title{
+    width: calc(100% - 32px);
+    height: 40px;
+    line-height: 40px;
+    font-size: 26px;
+    font-weight: 600;
+    border: 0px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0px 8px 0px 8px;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-left: -8px;
+    margin-bottom: 8px;
+    color: #222;
+  }
+  
+  .newTaskWindow .title:active, .newTaskWindow .title:focus{
+    border: 0px;
+    outline: none;
+  }
+  .newTaskWindow .title:hover{
+    background-color: #f3f5f8;
+  }
+  .newTaskWindow .element{
+    height: 32px;
+    line-height: 32px;
+    font-weight: 200;
+    outline: none;
+    border: 0px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444;
+  }
+  .newTaskWindow .element:hover{
+    background-color: #f3f5f8;  
+  }
+  .newTaskWindow textarea.element{
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    min-height: 2em;
+    height: auto;
+    cursor: text;
+    font-size: 16px;
+    color: #222;
+    background-color: #f1f1f1;
+    resize: vertical;
+    line-height: 1.6em;
+    overflow: hidden;
+    padding: 8px 8px 8px 8px;
+    resize: none;
+  }
+  
+  
+  
+  .newTaskWindow textarea.element:hover{
+    background-color: #e5e5e5;
+  }
+  
+  
+  .closeButton{
+    position: absolute;
+    display: flex;
+    right: 12px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    color: #777;
+    font-size: 17px;
+    font-weight: 200;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50%;
+    z-index: 30;
+    user-select: none;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0)
+  }
+  
+  .closeButton:hover, .closeButton:focus{
+    background-color: #f3f5f8;
+  }
+  
+  
+  .roundButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+   /* margin: 4px;*/
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 32px;
+    color: #555;
+    outline: 0px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0);
+   /* border: 0px solid #fff;*/
+  }
+  .roundButton:hover{
+    background-color: #f3f5f8;
+  }
+  .roundButton:active, .roundButton:focus{
+    background-color: #e5e5e5;
+  }
+  
+  
+  
+  .newTaskClose:hover{
+    color: #444;
+    background-color: #f3f5f8;
+  }
+  .itemsList{
+    float: left;
+    height: 100%;
+    width: 320px;
+    background-color: #eee;
+    color: #777;
+  }
+  .itemsInner{
+    height: calc(100% - 80px);
+    display: flex;
+    margin: auto;
+  }
+  
+  .calendar{
+    height: 100%;
+    width: calc(100%-320px);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 32px 1fr;
+  }
+  .calendar h1{
+    display: block;
+    padding-left: 4px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #222;
+  }
+  .calendar .daysOfWeek{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding-bottom: 8px;
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 0;
+    color: #aaa;
+    user-select:none;
+  }
+  .calendar .body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    border: 0px;
+    outline: 0px;
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+  }
+  .calendar .bodyContent{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    border: 0px;
+    outline: 0px;
+    grid-template-columns: repeat(1, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+    overflow: hidden;
+  }
+
+  /*.calendar .cell {
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+
+  }
+*/
+
+  .calendar .cell {
+    border-left: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf;
+    margin:0px;
+    outline: 0px;
+    padding: 0px;
+   /*
+    background-color: rgb(99, 94, 97);
+    */
+  }
+
+  .calendar .day {
+    display: block;
+    color: #444;
+    border: 0px;
+    outline: 0px;
+    padding: 8px;
+  }
+
+
+
+  .calendar .day_anotherMonth{
+    color: #bbb;
+    border: 0px;
+    outline: 0px;
+    padding: 8px;
+  }
+
+  .calendar .day::-webkit-scrollbar, .day::-webkit-scrollbar {
+    display: none;
+}
+
+  .calendar .currentDayCell{
+    background-color: #f3f5f8;
+  }
+  .calendar .num{
+    user-select: none;
+  }
+  
+  .datePicker{
+    position: fixed;
+    left: 400px;
+    top: 200px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 32px 28px 1fr;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.250);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .datePicker h1{
+    font-size: 18px;
+    font-weight: 400;
+    color: #222;
+    cursor: default;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  .datePicker h1:hover{
+    background-color: rgba(255, 255, 255, 0);
+  }
+  .datePicker .daysOfWeek{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 0;
+    color: #aaa;
+    user-select:none;
+  }
+  .datePicker .body{
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(7, minmax(32px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(32px, 1fr));
+    justify-items: center;
+    align-items: center;
+
+    /*
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    border: 0px;
+    outline: 0px;
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+    */
+    
+  }
+
+  .datePicker .bodyContent{
+    position: absolute;
+    top:0;
+    left:0;
+    margin:0;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(1, minmax(32px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(32px, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+
+
+
+  /*
+    .calendar .body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    border: 0px;
+    outline: 0px;
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+  }
+  .calendar .bodyContent{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    display: grid;
+    gap: 0;
+    border: 0px;
+    outline: 0px;
+    grid-template-columns: repeat(1, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+    overflow: hidden;
+  }
+  */
+
+  .datePicker .day {
+    color: #444;
+    display: block;
+    border: 0px;
+    outline: 0px;
+  }
+  .datePicker .day_anotherMonth{
+    color: #aaa;
+    display: block;
+    border: 0px;
+    outline: 0px;
+  }
+
+.datePicker .cell{
+  width: 32px;
+  height: 32px;
+}
+
+  .datePicker .num{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 4px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .datePicker .num:hover{
+    background-color: #f3f5f8;
+  }
+  .datePicker .num:active{
+    background-color: #e5e5e5;
+  }
+  .datePicker .num_selected{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+    background-color: #36e;
+    cursor: pointer;
+  }
+  .datePicker .num_selected:hover{
+    background-color: #47f;
+  }
+  
+  .select.element{
+    padding: 0px 8px 0px 8px;
+  }
+
+  .element.error, .element.error:hover{
+    position: relative;
+    background-color: rgb(243, 205, 205);
+  }
+
+  /*
+  .element.error:hover::after{
+    content: attr(data-errorMessage);
+    position: absolute;
+    top: -32px;
+    left: 0px;
+    z-index: 99;
+    background-color:rgb(95, 95, 95);
+    color: #fff;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    margin: 0px;
+    max-width: 900px;
+    min-width: 100px;
+    white-space: nowrap;
+  }
+*/
+
+  .tooltip{
+    content: attr(data-errorMessage);
+    position: absolute;
+    top: -32px;
+    left: 0px;
+    z-index: 99;
+    background-color:rgb(95, 95, 95);
+    color: #fff;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    margin: 0px;
+    max-width: 900px;
+    min-width: 100px;
+    white-space: nowrap;
+  }
+
+  .select:focus{
+    background-color: #e5e5e5;
+  }
+
+
+  .select_body.collapsed:after{
+    content: "\00A0 \00A0 🢓";
+    font-size: 1.1em;
+    /*position: relative;*/
+
+     }
+
+  .select_body.expanded:after{
+    font-size: 1.1em;
+    content: "\00A0 \00A0 🢑";
+    /*position: relative;*/
+
+  }
+
+  .select_option{
+    height: 32px;
+    display: flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: center;
+    cursor: default;
+  }
+
+  .select_option:hover{
+    background-color: #f3f5f8;
+  }
+
+  .select_option:focus{
+    background-color: #e5e5e5;
+    outline: 0px;
+  }
+
+  .select_option:active{
+    background-color: #dfdfdf;
+  }
+
+.select_modal_container_wrapper{
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+
+}
+
+  .select_modal_container{
+ 
+
+    padding: 8px 0px 8px 0px;
+    background-color: #fff;
+
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius:4px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.250);
+    transition: max-height 0.1s ease-in-out;
+    overflow: hidden;
+
+
+   /* max-height: 0px;*/
+  }
+
+  .select_modal_container.expanded{
+    display: flex;
+  }
+
+  .select_modal_container.collapsed{
+    display: none;
+    background-color: rgb(148, 78, 148);
+  }
+
+  .task{
+    display: flex;
+    align-items: center;
+    /*box-sizing: content-box;*/
+    border-radius: 2px;
+    margin: 2px 0px 2px -8px;
+    padding: 4px 4px 4px 4px;
+    width: calc(100%-8px);
+    height: 16px;
+    max-height: 16px;
+    background-color: #4a4;
+    cursor: pointer;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 200;
+    white-space: nowrap;
+  }
+
+  .task.placeholder{
+    display: flex;
+    margin: 2px 0px 2px -8px;
+    padding: 4px 4px 4px 4px;
+    /*width: 100%;*/
+    height: 16px;
+    max-height: 16px;
+    background-color:  rgba(5, 255, 255, 0);
+    cursor: pointer;
+    color: #fff;
+    font-size: 0px;
+  }
+
+  .task.green{background-color: #4a4;}
+  .task.purple{background-color: rgb(148, 78, 148);}
+  .task.orange{background-color: rgb(190, 129, 58);}
+  .task.yellow{background-color: rgb(185, 175, 83);}
+  .task.lightBlue{background-color: rgb(109, 195, 216);}
+  .task.blue{background-color: rgb(63, 97, 168);}
+  
+  .task.green:focus{background-color: rgb(77, 190, 77); outline:0px;}
+  .task.purple:focus{background-color: rgb(167, 88, 167); outline:0px;}
+  .task.orange:focus{background-color: rgb(212, 144, 65); outline:0px;}
+  .task.yellow:focus{background-color: rgb(202, 191, 89); outline:0px;}
+  .task.lightBlue:focus{background-color: rgb(118, 209, 231); outline:0px;}
+  .task.blue{background-color: rgb(69, 106, 185);}
+
+  .newTaskWindow>div{
+    scrollbar-width: thin;
+  }
+  .newTaskWindow>div::-webkit-scrollbar{
+    width: 8px;
+    position: absolute;
+  }
+  .newTaskWindow>div::-webkit-scrollbar-button {
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:0px;
+    height:0px
+  }
+  
+  .newTaskWindow>div::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0);
+    border: 4px solid rgba(255, 255, 255, 0);
+  
+  }
+  
+  .newTaskWindow>div::-webkit-scrollbar-thumb {
+    width: 4px;
+    -webkit-border-radius: 2px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #888;
+  }
+  
+  .newTaskWindow>div::-webkit-scrollbar-thumb:hover{
+    background-color: #666;
+  }
+  
+  .newTaskWindow>div::-webkit-scrollbar-thumb:active{
+    background-color: #454545;
+  }
+  
+  .newTaskWindow>div::-webkit-resizer{
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:0px;
+    height:0px
+  }
+  
